@@ -34,4 +34,5 @@ public:
 	int Radius;
 	double kalpha;
 	double kbetta;
+	int ballid;
 };

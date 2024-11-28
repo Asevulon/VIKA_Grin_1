@@ -124,7 +124,12 @@ void ModelDrawer::SetData(vector<double>& y)
 	data = y;
 	if (data.empty())return;
 	left = 0;
-	right = y.size() - 1;
+	right = (y.size() - 1) * nodelength;
+}
+
+void ModelDrawer::SetL(double val)
+{
+	nodelength = val;
 }
 
 void ModelDrawer::SetPadding(double lP, double rP, double tP, double bP)

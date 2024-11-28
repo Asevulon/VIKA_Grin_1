@@ -13,7 +13,7 @@ IMPLEMENT_DYNAMIC(ParamsDialog, CDialogEx)
 
 ParamsDialog::ParamsDialog(CWnd* pParent /*=nullptr*/)
 	: CDialogEx(IDD_PARAMS_DIALOG, pParent)
-	, N(10)
+	, N(65)
 	, k(100)
 	, dt(0.001)
 	, l0(1)
@@ -21,10 +21,11 @@ ParamsDialog::ParamsDialog(CWnd* pParent /*=nullptr*/)
 	, mu(0)
 	, betta(0)
 	, x0(0.5)
-	, Delay(100)
+	, Delay(1)
 	, Radius(5)
 	, kalpha(0)
 	, kbetta(0)
+	, ballid(1)
 {
 
 }
@@ -48,6 +49,7 @@ void ParamsDialog::DoDataExchange(CDataExchange* pDX)
 	DDX_Text(pDX, IDC_EDIT10, Radius);
 	DDX_Text(pDX, IDC_EDIT11, kalpha);
 	DDX_Text(pDX, IDC_EDIT12, kbetta);
+	DDX_Text(pDX, IDC_EDIT13, ballid);
 }
 
 

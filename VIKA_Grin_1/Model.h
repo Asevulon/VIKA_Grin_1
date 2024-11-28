@@ -23,7 +23,7 @@ private:
 	int Delay = 0;
 	double kalpha = 0;
 	double kbetta = 0;
-
+	int ballid = 1;
 	vector<double>x;
 	vector<double>v;
 	vector<double>Ek;
@@ -36,9 +36,13 @@ private:
 	mutex smutex;
 	mutex emutex;
 protected:
+	//Шаг рунгекутты для i-того шара
 	void DoStep(int id);
+	//Диффур
 	double f(double xl, double xr, double cx, double cy);
+	//Функция, которая делает шаги рунгекутты в отдельном потоке
 	void threadFunc();
+	//Вычисление энергий
 	void CalcEnergy();
 public:
 	void main();
@@ -54,6 +58,7 @@ public:
 	void SetDelay(int val);
 	void SetKAlpha(double val);
 	void SetKBetta(double val);
+	void SetBallId(int val);
 	vector<double> GetX();
 	vector<double> GetE();
 	vector<double> GetEk();

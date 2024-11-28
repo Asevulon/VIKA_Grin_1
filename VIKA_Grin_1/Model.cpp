@@ -26,15 +26,15 @@ void Model::DoStep(int id)
 
 double Model::f(double xl, double xr, double cx, double cy)
 {
-	double dll = (l0 - (cx - xl));
-	double dlr = (l0 - (xr - cx));
-	double kl = k + kalpha * fabs(dll) + kbetta * dll * dll;
-	double kr = k + kalpha * fabs(dlr) + kbetta * dlr * dlr;
-	double left = kl * dll / m;
-	double right = -kr * dlr / m;
-	double tr = mu * g;
+	double dll = (l0 - (cx - xl)); //удлинение слева
+	double dlr = (l0 - (xr - cx)); //удлинение справа
+	double kl = k + kalpha * fabs(dll) + kbetta * dll * dll; //жесткость слева
+	double kr = k + kalpha * fabs(dlr) + kbetta * dlr * dlr; //жесткосость справа
+	double left = kl * dll / m; //сила упругости слева
+	double right = -kr * dlr / m; //сила упругости справа
+	double tr = mu * g; //сухое трение
 	if (cy > 0)tr = -tr;
-	double trv = -betta * cy / m;
+	double trv = -betta * cy / m; //вязкое трение
 	return left + right + tr + trv;
 }
 
@@ -93,10 +93,13 @@ void Model::main()
 	{
 		x[i] = i * l0;
 		v[i] = 0;
+	}
+	x[ballid] += l0 * x0;
+
+	for (int i = 0; i < N; i++)
+	{
 		path[i].push_back(x[i]);
 	}
-	x[1] += l0 * x0;
-
 	thread newthread([&]() {threadFunc(); });
 	newthread.detach();
 }
@@ -154,6 +157,11 @@ void Model::SetKAlpha(double val)
 void Model::SetKBetta(double val)
 {
 	kbetta = val;
+}
+
+void Model::SetBallId(int val)
+{
+	ballid = val;
 }
 
 vector<double> Model::GetX()

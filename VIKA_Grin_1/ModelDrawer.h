@@ -25,7 +25,7 @@ private:
 	double right;
 	double bot = 0;
 	double top = 100;
-
+	double nodelength = 0;
 
 	ULONG_PTR token;
 	
@@ -42,7 +42,7 @@ protected:
 public:
 	virtual void DrawItem(LPDRAWITEMSTRUCT /*lpDrawItemStruct*/);
 	void SetData(vector<double>&y);
-
+	void SetL(double val);
 	//Отступ задается в процентах (диапазон значений от 0 до 100)
 	void SetPadding(double lPadding, double rPadding, double tPadding, double bPadding);
 	void SetMarksLen(int len);

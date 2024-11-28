@@ -196,7 +196,9 @@ void MyDlg::OnBnClickedParamsDialogButton()
 	model.SetBetta(pdlg.betta);
 	model.SetX0(pdlg.x0);
 	model.SetDelay(pdlg.Delay);
+	model.SetBallId(pdlg.ballid);
 	MainPic.SetRadius(pdlg.Radius);
+	MainPic.SetL(pdlg.l0);
 	init = true;
 }
 
